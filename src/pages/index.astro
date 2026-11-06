@@ -1,0 +1,493 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CoffeeCard from '../components/CoffeeCard.astro';
+import { coffeeGrades } from '../data/coffees';
+import { articles } from '../data/articles';
+
+const featuredCoffees = coffeeGrades.filter(c => ['bugisu-aa', 'rwenzori-natural', 'robusta-18'].includes(c.id));
+---
+
+<Layout
+  title="Demo Coffee Exporters Ltd. | Ugandan Specialty Arabica and Fine Robusta"
+  description="Licensed export partner for Ugandan green coffee origins. Sourcing Mount Elgon Bugisu Arabica, Rwenzori micro-lots, and Screen 18 fine Robusta."
+>
+
+  <!-- Hero Section with High-Resolution Photographic Background -->
+  <section 
+    class="relative text-white pt-24 pb-28 lg:pt-32 lg:pb-40 overflow-hidden bg-cover bg-center bg-no-repeat"
+    style="background-image: linear-gradient(to bottom, rgba(18, 16, 15, 0.74) 0%, rgba(18, 16, 15, 0.84) 60%, rgba(18, 16, 15, 0.96) 100%), url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <!-- Subtle Ambient Vignette & Grain -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40 pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        
+        <!-- Main Title with Staggered Fade-in Animation -->
+        <h1 
+          data-i18n="hero_origin_title"
+          class="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif tracking-tight leading-[1.12] mb-6 reveal-on-scroll delay-100 text-white drop-shadow-md"
+        >
+          Ugandan Coffee Origins, Exported with Institutional Integrity.
+        </h1>
+
+        <!-- Typewriter Animated Origin Headline -->
+        <div class="h-9 flex items-center text-amber-300 font-serif text-lg sm:text-xl font-semibold mb-6 reveal-on-scroll delay-150">
+          <span data-i18n="hero_origin_focus" class="mr-2 text-stone-300 font-sans text-xs uppercase tracking-widest font-bold">Origin Focus:</span>
+          <span id="hero-typewriter-text" class="border-r-2 border-amber-400 pr-1"></span>
+        </div>
+
+        <!-- Subtitle -->
+        <p data-i18n="hero_subtitle" class="text-base sm:text-lg text-stone-200 font-normal leading-relaxed mb-10 reveal-on-scroll delay-200 drop-shadow">
+          From the volcanic heights of Mount Elgon to the glacial slopes of the Rwenzori range, we mill, sort, and dispatch certified specialty Arabica and Screen 18 fine Robusta directly from Kampala to international roasters.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 reveal-on-scroll delay-300">
+          <a
+            href="/quote"
+            data-i18n="hero_btn_quote"
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#A35326] to-[#BA5E2B] hover:from-[#8E431B] hover:to-[#A35326] transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] text-center border border-amber-400/30"
+          >
+            Request Export Quote
+          </a>
+          <a
+            href="/coffee"
+            data-i18n="hero_btn_explore"
+            class="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest text-stone-200 bg-stone-900/70 backdrop-blur-md hover:bg-stone-800 hover:text-white border border-white/20 transition-all duration-200 text-center shadow-lg"
+          >
+            Explore Green Coffee Grades
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metric Statistics Ribbon with Frosted Background -->
+  <section class="bg-white border-b border-stone-200 py-10 relative z-10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-stone-200">
+        <div class="pt-4 lg:pt-0 lg:px-6 first:pl-0 reveal-on-scroll">
+          <div data-i18n="stat_capacity_num" class="text-3xl sm:text-4xl font-extrabold text-[#1C1917] font-serif tracking-tight">15,000+</div>
+          <div data-i18n="stat_capacity_title" class="text-xs font-bold uppercase tracking-wider text-coffee-600 mt-1">Metric Tons Annual Capacity</div>
+          <p data-i18n="stat_capacity_desc" class="text-xs text-stone-500 mt-1">Dry milling line at Plot 45 Industrial Area</p>
+        </div>
+
+        <div class="pt-4 lg:pt-0 lg:px-6 reveal-on-scroll delay-100">
+          <div data-i18n="stat_farmers_num" class="text-3xl sm:text-4xl font-extrabold text-[#1C1917] font-serif tracking-tight">4,200+</div>
+          <div data-i18n="stat_farmers_title" class="text-xs font-bold uppercase tracking-wider text-coffee-600 mt-1">Direct Farmer Partners</div>
+          <p data-i18n="stat_farmers_desc" class="text-xs text-stone-500 mt-1">Direct smallholder partners across 12 cooperatives</p>
+        </div>
+
+        <div class="pt-4 lg:pt-0 lg:px-6 reveal-on-scroll delay-200">
+          <div data-i18n="stat_eudr_num" class="text-3xl sm:text-4xl font-extrabold text-[#1C1917] font-serif tracking-tight">100%</div>
+          <div data-i18n="stat_eudr_title" class="text-xs font-bold uppercase tracking-wider text-coffee-600 mt-1">EUDR Deforestation Compliant</div>
+          <p data-i18n="stat_eudr_desc" class="text-xs text-stone-500 mt-1">GPS polygon mapping on export consignments</p>
+        </div>
+
+        <div class="pt-4 lg:pt-0 lg:px-6 reveal-on-scroll delay-300">
+          <div data-i18n="stat_dispatch_num" class="text-3xl sm:text-4xl font-extrabold text-[#1C1917] font-serif tracking-tight">48 Hours</div>
+          <div data-i18n="stat_dispatch_title" class="text-xs font-bold uppercase tracking-wider text-coffee-600 mt-1">Sample Dispatch Time</div>
+          <p data-i18n="stat_dispatch_desc" class="text-xs text-stone-500 mt-1">Worldwide air courier delivery via DHL / FedEx</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Origin Regions Overview with Visual Cards (Authentic Coffee Images Only) -->
+  <section class="py-20 bg-[#FAF8F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14 reveal-on-scroll">
+        <span data-i18n="terroir_badge" class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-2">
+          UGANDAN TERROIR
+        </span>
+        <h2 data-i18n="terroir_title" class="text-3xl sm:text-4xl font-bold font-serif text-stone-900 tracking-tight leading-tight">
+          Three Distinct Growing Belts: Volcanic Arabica and Indigenous Robusta
+        </h2>
+        <p data-i18n="terroir_subtitle" class="text-stone-600 text-sm sm:text-base mt-3 leading-relaxed">
+          Uganda is uniquely endowed with high-altitude volcanic microclimates for specialty Arabica and equatorial rainforest conditions for indigenous Canephora.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Region 1: Mount Elgon with Roasted Beans Background -->
+        <div 
+          class="relative rounded-3xl overflow-hidden shadow-lg border border-stone-200/90 text-white flex flex-col justify-between min-h-[440px] bg-cover bg-center reveal-on-scroll group"
+          style="background-image: linear-gradient(to top, rgba(18, 16, 15, 0.95) 0%, rgba(18, 16, 15, 0.7) 50%, rgba(18, 16, 15, 0.4) 100%), url('https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&fit=crop&w=1000&q=80');"
+        >
+          <div class="p-7">
+            <div class="flex items-center justify-between mb-3">
+              <span data-i18n="terroir_elgon_region" class="text-[11px] font-bold uppercase tracking-wider text-amber-300">Eastern Uganda</span>
+              <span data-i18n="terroir_elgon_alt" class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20">1,600 to 2,200 MASL</span>
+            </div>
+            <h3 data-i18n="terroir_elgon_title" class="text-2xl font-bold font-serif text-white">Mount Elgon (Bugisu)</h3>
+          </div>
+
+          <div class="p-7 pt-0 space-y-4">
+            <p data-i18n="terroir_elgon_desc" class="text-xs text-stone-200 leading-relaxed">
+              An extinct shield volcano on the Kenya-Uganda border. Rich mineral volcanic loam, ample rainfall, and cloud cover produce dense, complex Arabica cherries.
+            </p>
+            <div class="space-y-1.5 text-xs border-t border-white/15 pt-3 text-stone-300">
+              <div class="flex justify-between">
+                <span class="text-stone-400">Key Grades:</span>
+                <span data-i18n="terroir_elgon_grades" class="font-semibold text-white">Bugisu AA, Bugisu A, PB</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-400">Processing:</span>
+                <span data-i18n="terroir_elgon_proc" class="font-semibold text-white">Fully Washed, Sun-Dried</span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <a href="/coffee#bugisu-aa" class="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">
+                <span data-i18n="terroir_elgon_btn">View Bugisu Lots</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Region 2: Rwenzori Mountains with Specialty Coffee Cup Background -->
+        <div 
+          class="relative rounded-3xl overflow-hidden shadow-lg border border-stone-200/90 text-white flex flex-col justify-between min-h-[440px] bg-cover bg-center reveal-on-scroll delay-100 group"
+          style="background-image: linear-gradient(to top, rgba(18, 16, 15, 0.95) 0%, rgba(18, 16, 15, 0.7) 50%, rgba(18, 16, 15, 0.4) 100%), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1000&q=80');"
+        >
+          <div class="p-7">
+            <div class="flex items-center justify-between mb-3">
+              <span data-i18n="terroir_rwenzori_region" class="text-[11px] font-bold uppercase tracking-wider text-amber-300">Western Uganda</span>
+              <span data-i18n="terroir_rwenzori_alt" class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20">1,700 to 2,300 MASL</span>
+            </div>
+            <h3 data-i18n="terroir_rwenzori_title" class="text-2xl font-bold font-serif text-white">Rwenzori Mountains</h3>
+          </div>
+
+          <div class="p-7 pt-0 space-y-4">
+            <p data-i18n="terroir_rwenzori_desc" class="text-xs text-stone-200 leading-relaxed">
+              The legendary Mountains of the Moon along the Congo border. Glacial runoff and steep terraced farms provide the foundation for slow natural processing.
+            </p>
+            <div class="space-y-1.5 text-xs border-t border-white/15 pt-3 text-stone-300">
+              <div class="flex justify-between">
+                <span class="text-stone-400">Key Grades:</span>
+                <span data-i18n="terroir_rwenzori_grades" class="font-semibold text-white">Specialty Naturals (86+ SCA)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-400">Processing:</span>
+                <span data-i18n="terroir_rwenzori_proc" class="font-semibold text-white">Extended Natural, African Beds</span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <a href="/coffee#rwenzori-natural" class="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">
+                <span data-i18n="terroir_rwenzori_btn">View Rwenzori Micro-Lots</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Region 3: Central Robusta Belt (AUTHENTIC COFFEE JUTE SACKS BACKGROUND) -->
+        <div 
+          class="relative rounded-3xl overflow-hidden shadow-lg border border-stone-200/90 text-white flex flex-col justify-between min-h-[440px] bg-cover bg-center reveal-on-scroll delay-200 group"
+          style="background-image: linear-gradient(to top, rgba(18, 16, 15, 0.95) 0%, rgba(18, 16, 15, 0.7) 50%, rgba(18, 16, 15, 0.4) 100%), url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80');"
+        >
+          <div class="p-7">
+            <div class="flex items-center justify-between mb-3">
+              <span data-i18n="terroir_robusta_region" class="text-[11px] font-bold uppercase tracking-wider text-amber-300">Central & South</span>
+              <span data-i18n="terroir_robusta_alt" class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20">1,100 to 1,450 MASL</span>
+            </div>
+            <h3 data-i18n="terroir_robusta_title" class="text-2xl font-bold font-serif text-white">Central Robusta Belt</h3>
+          </div>
+
+          <div class="p-7 pt-0 space-y-4">
+            <p data-i18n="terroir_robusta_desc" class="text-xs text-stone-200 leading-relaxed">
+              The native home of wild Coffea canephora. Grown under evergreen shade in Masaka and Mubende. Our Screen 18 selection delivers dense, crema-rich espresso components.
+            </p>
+            <div class="space-y-1.5 text-xs border-t border-white/15 pt-3 text-stone-300">
+              <div class="flex justify-between">
+                <span class="text-stone-400">Key Grades:</span>
+                <span data-i18n="terroir_robusta_grades" class="font-semibold text-white">Screen 18 Extra Large, Screen 15</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-400">Processing:</span>
+                <span data-i18n="terroir_robusta_proc" class="font-semibold text-white">Polished Natural & Washed</span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <a href="/coffee#robusta-18" class="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-amber-300 hover:text-white transition-colors">
+                <span data-i18n="terroir_robusta_btn">View Robusta Specs</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Coffees Section -->
+  <section class="py-20 bg-white border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span data-i18n="featured_badge" class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-2">
+            EXPORT SELECTION
+          </span>
+          <h2 data-i18n="featured_title" class="text-3xl sm:text-4xl font-bold font-serif text-stone-900 tracking-tight">
+            Current Crop Export Offerings
+          </h2>
+        </div>
+        <div>
+          <a
+            href="/coffee"
+            class="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-coffee-700 hover:text-coffee-800 border-b-2 border-coffee-600 pb-1"
+          >
+            <span data-i18n="featured_catalog_btn">View Complete Export Catalog</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredCoffees.map((coffee) => (
+          <div class="reveal-on-scroll">
+            <CoffeeCard coffee={coffee} featured={coffee.id === 'bugisu-aa'} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industrial Facility & Processing Infrastructure with Rich Background Image -->
+  <section 
+    class="py-24 text-white relative bg-cover bg-center bg-fixed"
+    style="background-image: linear-gradient(to right, rgba(18, 16, 15, 0.94) 0%, rgba(18, 16, 15, 0.82) 50%, rgba(18, 16, 15, 0.95) 100%), url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="space-y-6 reveal-on-scroll">
+          <span data-i18n="mill_badge" class="text-xs font-bold tracking-widest uppercase text-amber-300 block">
+            KAMPALA EXPORT MILL
+          </span>
+          <h2 data-i18n="mill_title" class="text-3xl sm:text-4xl font-bold font-serif text-white tracking-tight leading-tight">
+            Dry Milling Infrastructure at Plot 45 Industrial Area
+          </h2>
+          <p data-i18n="mill_desc" class="text-stone-300 text-sm leading-relaxed">
+            Our central export milling and logistics hub in Kampala processes up to 15,000 metric tons of export-grade coffee annually. Designed to meet international food safety protocols, uniform bean density, moisture precision, and defect-free lots.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+            <div class="border-l-2 border-amber-500 pl-4 space-y-1">
+              <h4 data-i18n="mill_opt_title" class="text-sm font-bold text-white uppercase tracking-wider">Optical Color Sorting</h4>
+              <p data-i18n="mill_opt_desc" class="text-xs text-stone-400">High-speed monochromatic and bichromatic cameras reject insect-damaged and defective beans.</p>
+            </div>
+            <div class="border-l-2 border-amber-500 pl-4 space-y-1">
+              <h4 data-i18n="mill_grav_title" class="text-sm font-bold text-white uppercase tracking-wider">Gravimetric Density Tables</h4>
+              <p data-i18n="mill_grav_desc" class="text-xs text-stone-400">Separates lower-density seeds to ensure uniform roasting expansion.</p>
+            </div>
+            <div class="border-l-2 border-amber-500 pl-4 space-y-1">
+              <h4 data-i18n="mill_moist_title" class="text-sm font-bold text-white uppercase tracking-wider">Moisture Controlled Bays</h4>
+              <p data-i18n="mill_moist_desc" class="text-xs text-stone-400">All dry parchment and green lots stored strictly between 10.5% and 12.0% moisture.</p>
+            </div>
+            <div class="border-l-2 border-amber-500 pl-4 space-y-1">
+              <h4 data-i18n="mill_grainpro_title" class="text-sm font-bold text-white uppercase tracking-wider">Hermetic GrainPro Stuffing</h4>
+              <p data-i18n="mill_grainpro_desc" class="text-xs text-stone-400">Direct container stuffing inside sealed bays to prevent moisture absorption in maritime transit.</p>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a
+              href="/export-services"
+              data-i18n="mill_btn"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-coffee-600 hover:bg-coffee-500 transition-colors shadow-lg"
+            >
+              Tour Export Services & Milling
+            </a>
+          </div>
+        </div>
+
+        <!-- Technical Specification Glass Box -->
+        <div class="bg-stone-900/85 backdrop-blur-xl rounded-3xl p-8 border border-white/15 space-y-6 reveal-on-scroll delay-150 shadow-2xl">
+          <div class="flex items-center justify-between pb-4 border-b border-stone-700">
+            <div>
+              <div data-i18n="audit_tag" class="text-xs font-bold uppercase text-stone-400">EXPORT FACILITY AUDIT</div>
+              <div data-i18n="audit_title" class="text-lg font-bold text-white font-serif">Quality Standards Compliance</div>
+            </div>
+            <span data-i18n="audit_accredited" class="px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-600/50 text-emerald-300 text-[10px] font-bold">
+              UCDA ACCREDITED
+            </span>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div class="p-4 rounded-2xl bg-stone-950/70 border border-white/10 space-y-1">
+              <div class="flex justify-between font-bold text-white">
+                <span data-i18n="audit_moist_label">Maximum Moisture Content</span>
+                <span data-i18n="audit_moist_val" class="text-emerald-400">12.0% Guarantee</span>
+              </div>
+              <p data-i18n="audit_moist_sub" class="text-stone-400 text-[11px]">Calibrated with digital capacitance meters before pre-shipment sign-off.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-stone-950/70 border border-white/10 space-y-1">
+              <div class="flex justify-between font-bold text-white">
+                <span data-i18n="audit_defect_label">Green Defect Threshold</span>
+                <span data-i18n="audit_defect_val" class="text-emerald-400">Specialty Grade 1 & 2 Standard</span>
+              </div>
+              <p data-i18n="audit_defect_sub" class="text-stone-400 text-[11px]">Strict compliance with Green Coffee Association classification tables.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-stone-950/70 border border-white/10 space-y-1">
+              <div class="flex justify-between font-bold text-white">
+                <span data-i18n="audit_cupping_label">Sensory Lab Evaluation</span>
+                <span data-i18n="audit_cupping_val" class="text-emerald-400">Dual Q-Grader Sign-off</span>
+              </div>
+              <p data-i18n="audit_cupping_sub" class="text-stone-400 text-[11px]">Consignments cupped across intake, post-milling, and container loading stages.</p>
+            </div>
+          </div>
+
+          <div class="pt-2 text-stone-400 text-xs text-center border-t border-stone-800">
+            Plot 45, Industrial Area, Kampala, Uganda
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Intelligence & Articles Preview -->
+  <section class="py-20 bg-stone-50 border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span data-i18n="market_badge" class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-2">
+            TRADE INTELLIGENCE
+          </span>
+          <h2 data-i18n="market_title" class="text-3xl sm:text-4xl font-bold font-serif text-stone-900 tracking-tight">
+            Market Updates and Harvest Bulletins
+          </h2>
+        </div>
+        <a
+          href="/blog"
+          data-i18n="market_btn"
+          class="text-xs font-bold uppercase tracking-wider text-coffee-700 hover:text-coffee-800 border-b-2 border-coffee-600 pb-1"
+        >
+          View All Market Reports
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.slice(0, 3).map((article) => (
+          <article class="bg-white rounded-3xl p-7 border border-stone-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between reveal-on-scroll">
+            <div>
+              <div class="flex items-center justify-between text-xs text-stone-500 mb-3">
+                <span class="font-bold text-coffee-600 uppercase tracking-wider">{article.category}</span>
+                <span>{article.readTime}</span>
+              </div>
+              <h3 class="text-xl font-bold font-serif text-stone-900 hover:text-coffee-600 transition-colors leading-tight mb-3">
+                <a href={`/blog/${article.slug}`}>{article.title}</a>
+              </h3>
+              <p class="text-xs text-stone-600 leading-relaxed line-clamp-3 mb-6">
+                {article.summary}
+              </p>
+            </div>
+            <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+              <span class="text-stone-500">{article.date}</span>
+              <a href={`/blog/${article.slug}`} data-i18n="market_read" class="font-bold text-[#A35326] hover:text-[#8E431B] uppercase tracking-wider">
+                Read Report
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Bar with Photographic Background -->
+  <section 
+    class="py-20 text-white relative bg-cover bg-center"
+    style="background-image: linear-gradient(rgba(18, 16, 15, 0.82), rgba(18, 16, 15, 0.92)), url('https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl space-y-6 relative z-10">
+      <h2 data-i18n="cta_title" class="text-3xl sm:text-4xl font-bold font-serif text-white tracking-tight">
+        Book Current Crop Coffee Allocations
+      </h2>
+      <p data-i18n="cta_desc" class="text-sm text-stone-200 leading-relaxed">
+        Whether sourcing container-load FOB Mombasa contracts or requesting 500g pre-shipment cupping samples, our Kampala trade desk is prepared to assist your procurement team.
+      </p>
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/quote"
+          data-i18n="cta_btn_quote"
+          class="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#A35326] to-[#BA5E2B] hover:from-[#8E431B] hover:to-[#A35326] transition-all shadow-lg"
+        >
+          Request Formal Quote
+        </a>
+        <a
+          href="tel:+256754849895"
+          data-i18n="cta_btn_call"
+          class="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-stone-200 bg-stone-900/80 backdrop-blur-md hover:bg-stone-800 transition-colors border border-white/20"
+        >
+          Call Desk: +256754849895
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  import { typewriterPhrases } from '../scripts/translations';
+  import { getPreferredLanguage } from '../scripts/i18n-engine';
+
+  // Dynamic Typewriter Animation Engine with Multilingual Support
+  function setupTypewriter() {
+    const target = document.getElementById('hero-typewriter-text');
+    if (!target) return;
+
+    let currentLang = getPreferredLanguage();
+    let phrases = typewriterPhrases[currentLang] || typewriterPhrases.en;
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let timeoutId: number;
+
+    function type() {
+      const currentPhrase = phrases[phraseIndex] || phrases[0];
+
+      if (isDeleting) {
+        target!.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        target!.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let speed = isDeleting ? 25 : 55;
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        speed = 2200; // Pause after typing full phrase
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        speed = 400; // Pause before typing next phrase
+      }
+
+      timeoutId = window.setTimeout(type, speed);
+    }
+
+    type();
+
+    // Listen for language changes and adapt phrases seamlessly
+    window.addEventListener('demo:languagechange', ((e: CustomEvent) => {
+      const newLang = e.detail?.lang || 'en';
+      phrases = typewriterPhrases[newLang] || typewriterPhrases.en;
+      phraseIndex = 0;
+      charIndex = 0;
+      isDeleting = false;
+    }) as EventListener);
+
+    // Clean up if page is navigated away with View Transitions
+    document.addEventListener('astro:before-swap', () => {
+      window.clearTimeout(timeoutId);
+    }, { once: true });
+  }
+
+  setupTypewriter();
+  document.addEventListener('astro:page-load', setupTypewriter);
+</script>

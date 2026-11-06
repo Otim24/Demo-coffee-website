@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { articles } from '../../data/articles';
+---
+
+<Layout
+  title="Market Intelligence & Harvest Reports | Demo Coffee Exporters Ltd."
+  description="Analysis of Uganda coffee export figures, EUDR deforestation compliance guidelines, harvest updates from Mount Elgon, and specialty Robusta market dynamics."
+>
+  <!-- Page Header with Background Image -->
+  <div 
+    class="relative text-white py-20 lg:py-28 border-b border-stone-800 bg-cover bg-center"
+    style="background-image: linear-gradient(to bottom, rgba(18, 16, 15, 0.78) 0%, rgba(18, 16, 15, 0.90) 100%), url('https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-600/40 text-[10px] text-amber-300 font-bold tracking-widest uppercase mb-4">
+          <span>INDUSTRY PERSPECTIVES</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold font-serif tracking-tight leading-tight">
+          Market Intelligence and Crop Reports
+        </h1>
+        <p class="text-stone-200 text-sm sm:text-base mt-4 leading-relaxed">
+          Simulated market briefings, UCDA statistical reviews, agronomic harvest field notes, and international regulatory analysis compiled by our Kampala trade and laboratory desks.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Articles Grid -->
+  <section class="py-20 bg-[#FAF8F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        {articles.map((article) => (
+          <article class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between reveal-on-scroll">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between text-xs text-stone-500">
+                <span class="font-bold text-coffee-600 uppercase tracking-wider">{article.category}</span>
+                <span>{article.readTime}</span>
+              </div>
+
+              <h2 class="text-2xl font-bold font-serif text-stone-900 hover:text-coffee-600 transition-colors leading-tight">
+                <a href={`/blog/${article.slug}`}>{article.title}</a>
+              </h2>
+
+              <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                {article.summary}
+              </p>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-stone-100 flex items-center justify-between text-xs">
+              <div class="text-stone-500">
+                <span>By {article.author}</span>
+                <span class="mx-1.5 text-stone-300">|</span>
+                <span>{article.date}</span>
+              </div>
+              <a
+                href={`/blog/${article.slug}`}
+                class="font-bold text-[#A35326] hover:text-[#8E431B] uppercase tracking-wider inline-flex items-center space-x-1"
+              >
+                <span>Read Full Report</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter / Trade Digest Box -->
+  <section class="py-16 bg-white border-t border-stone-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <h3 class="text-2xl font-bold font-serif text-stone-900">
+        Receive Our Monthly East Africa Export Briefing
+      </h3>
+      <p class="text-xs sm:text-sm text-stone-600 max-w-xl mx-auto leading-relaxed">
+        Direct updates on Kampala spot pricing, harvest progress in Mount Elgon and Rwenzori, and port terminal statistics at Mombasa.
+      </p>
+      <div class="pt-4 max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          placeholder="Enter corporate email address"
+          class="flex-grow px-5 py-3 rounded-full border border-stone-300 text-xs text-stone-900 outline-none focus:ring-2 focus:ring-coffee-500/20 focus:border-coffee-500"
+        />
+        <a
+          href="/quote"
+          class="px-6 py-3 rounded-full bg-[#1C1917] hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider transition-colors text-center"
+        >
+          Subscribe
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

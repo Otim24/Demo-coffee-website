@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="For Buyers & Importers | Demo Coffee Exporters Ltd."
+  description="Commercial buyer guide for green coffee importers: minimum order quantities, Incoterms, payment options, shipping transit times from Mombasa, and sample dispatch protocols."
+>
+  <!-- Page Header with Background Image -->
+  <div 
+    class="relative text-white py-20 lg:py-28 border-b border-stone-800 bg-cover bg-center"
+    style="background-image: linear-gradient(to bottom, rgba(18, 16, 15, 0.78) 0%, rgba(18, 16, 15, 0.90) 100%), url('https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-600/40 text-[10px] text-amber-300 font-bold tracking-widest uppercase mb-4">
+          <span>COMMERCIAL PROTOCOLS</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold font-serif tracking-tight leading-tight">
+          International Buyer and Importer Guide
+        </h1>
+        <p class="text-stone-200 text-sm sm:text-base mt-4 leading-relaxed">
+          Clear contract terms, transparent export documentation, and reliable execution for green coffee brokers, multinational traders, and specialty roasters worldwide.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Purchasing Terms & MOQs -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14">
+        <span class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-2">
+          ORDER SPECIFICATIONS
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold font-serif text-stone-900 tracking-tight">
+          Minimum Order Quantities and Contract Volumes
+        </h2>
+        <p class="text-stone-600 text-sm mt-3 leading-relaxed">
+          We demonstrate both container-load commercial supply agreements and specialty micro-lot allocations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Tier 1 -->
+        <div class="p-8 rounded-3xl bg-stone-50 border border-stone-200 flex flex-col justify-between space-y-6">
+          <div>
+            <div class="text-xs font-bold text-coffee-700 uppercase tracking-widest mb-1">Tier 01</div>
+            <h3 class="text-2xl font-bold font-serif text-stone-900">Pre-Shipment Samples</h3>
+            <div class="text-xs font-semibold text-stone-500 mt-1">300g to 5kg Courier Dispatches</div>
+            <p class="text-xs text-stone-600 leading-relaxed mt-4">
+              Representative samples drawn from current milled inventory, sealed in hermetic barrier foil with complete physical and sensory lab data.
+            </p>
+            <ul class="space-y-2 text-xs text-stone-700 mt-4 pt-4 border-t border-stone-200">
+              <li>Air courier dispatch via DHL / FedEx</li>
+              <li>Turnaround time: 48 business hours</li>
+              <li>Free for qualified commercial buyers</li>
+            </ul>
+          </div>
+          <a href="/quote?interest=sample" class="block w-full py-3 rounded-full bg-white hover:bg-stone-100 border border-stone-300 text-center text-xs font-bold uppercase tracking-wider text-stone-900 transition-colors">
+            Request Sample Box
+          </a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="p-8 rounded-3xl bg-white border-2 border-coffee-500 shadow-xl flex flex-col justify-between space-y-6 relative">
+          <div class="absolute -top-3.5 right-6 px-3.5 py-0.5 rounded-full bg-coffee-600 text-white text-[10px] font-bold uppercase tracking-widest shadow">
+            Standard Export FCL
+          </div>
+          <div>
+            <div class="text-xs font-bold text-coffee-700 uppercase tracking-widest mb-1">Tier 02</div>
+            <h3 class="text-2xl font-bold font-serif text-stone-900">1 x 20ft Full Container</h3>
+            <div class="text-xs font-semibold text-stone-500 mt-1">19.2 Metric Tons (320 Bags)</div>
+            <p class="text-xs text-stone-600 leading-relaxed mt-4">
+              The international benchmark for green coffee shipping. Stuffed in new 60kg jute bags with 50-micron GrainPro hermetic liners.
+            </p>
+            <ul class="space-y-2 text-xs text-stone-700 mt-4 pt-4 border-t border-stone-200">
+              <li>Incoterms: FOB Mombasa or CIF Port</li>
+              <li>Desiccant lined container stuffing</li>
+              <li>Tamper-evident bolt seals and inspection sign-off</li>
+            </ul>
+          </div>
+          <a href="/quote" class="block w-full py-3 rounded-full bg-gradient-to-r from-[#A35326] to-[#BA5E2B] hover:from-[#8E431B] hover:to-[#A35326] text-center text-xs font-bold uppercase tracking-wider text-white transition-all shadow-md">
+            Request Container Quote
+          </a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="p-8 rounded-3xl bg-stone-50 border border-stone-200 flex flex-col justify-between space-y-6">
+          <div>
+            <div class="text-xs font-bold text-coffee-700 uppercase tracking-widest mb-1">Tier 03</div>
+            <h3 class="text-2xl font-bold font-serif text-stone-900">Annual Supply Contracts</h3>
+            <div class="text-xs font-semibold text-stone-500 mt-1">5 to 50+ Containers Per Season</div>
+            <p class="text-xs text-stone-600 leading-relaxed mt-4">
+              Forward contracting and scheduled monthly shipments for commercial roasters seeking price and quality certainty across harvest seasons.
+            </p>
+            <ul class="space-y-2 text-xs text-stone-700 mt-4 pt-4 border-t border-stone-200">
+              <li>Fixed price or differential against ICE London / NY</li>
+              <li>Scheduled monthly departures from Mombasa</li>
+              <li>Dedicated cooperative lot allocation</li>
+            </ul>
+          </div>
+          <a href="/quote" class="block w-full py-3 rounded-full bg-white hover:bg-stone-100 border border-stone-300 text-center text-xs font-bold uppercase tracking-wider text-stone-900 transition-colors">
+            Inquire Forward Contracts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Incoterms & Payment Terms -->
+  <section class="py-20 bg-[#FAF8F5] border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        
+        <!-- Incoterms Table -->
+        <div class="space-y-6">
+          <div>
+            <span class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-1">
+              TRADE TERMS
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-bold font-serif text-stone-900 tracking-tight">
+              Incoterms 2020 Options
+            </h3>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
+              <div class="font-bold text-sm text-stone-900">FOB Mombasa Port (Free on Board)</div>
+              <p class="text-stone-600 mt-1">
+                Standard offering. Includes inland bonded transport from Kampala to Mombasa, port terminal handling charges (THC), export customs clearance, and loading onto ocean vessel.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
+              <div class="font-bold text-sm text-stone-900">CIF Destination Port (Cost, Insurance & Freight)</div>
+              <p class="text-stone-600 mt-1">
+                We book ocean freight and marine cargo insurance up to designated discharge ports (Hamburg, Genoa, Rotterdam, Houston, Yokohama, etc.).
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
+              <div class="font-bold text-sm text-stone-900">FCA Kampala Dry Mill (Free Carrier)</div>
+              <p class="text-stone-600 mt-1">
+                For international trade houses with their own East African freight forwarding infrastructure. Handover occurs directly at our Plot 45 warehouse.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Terms -->
+        <div class="space-y-6">
+          <div>
+            <span class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-1">
+              SETTLEMENT METHODS
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-bold font-serif text-stone-900 tracking-tight">
+              Accepted Payment Structures
+            </h3>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
+              <div class="font-bold text-sm text-stone-900">Irrevocable Letter of Credit (LC) at Sight</div>
+              <p class="text-stone-600 mt-1">
+                Issued by a first-class international commercial bank, payable upon presentation of complete shipping and inspection documents.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
+              <div class="font-bold text-sm text-stone-900">Cash Against Documents (CAD)</div>
+              <p class="text-stone-600 mt-1">
+                Standard documentary collection handled bank-to-bank through correspondent international banking partners.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
+              <div class="font-bold text-sm text-stone-900">Telegraphic Transfer (TT Deposit + Balance)</div>
+              <p class="text-stone-600 mt-1">
+                Deposit upon contract signing, with remaining balance payable upon transmittal of non-negotiable copy of ocean Bill of Lading.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Ocean Transit Times Table -->
+  <section class="py-20 bg-white border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-1">
+          SHIPPING TIMETABLES
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-serif text-stone-900 tracking-tight">
+          Estimated Ocean Transit Times from Mombasa Port
+        </h2>
+        <p class="text-stone-600 text-xs mt-2">
+          Typical vessel durations following vessel departure from Mombasa deep-water terminal.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs">
+        <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center space-y-1">
+          <div class="font-bold text-stone-900">Genoa / Trieste</div>
+          <div class="text-coffee-700 font-bold text-sm">18 to 22 Days</div>
+          <div class="text-[10px] text-stone-500">Mediterranean</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center space-y-1">
+          <div class="font-bold text-stone-900">Rotterdam / Antwerp</div>
+          <div class="text-coffee-700 font-bold text-sm">24 to 28 Days</div>
+          <div class="text-[10px] text-stone-500">Northern Europe</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center space-y-1">
+          <div class="font-bold text-stone-900">Hamburg / Bremen</div>
+          <div class="text-coffee-700 font-bold text-sm">26 to 30 Days</div>
+          <div class="text-[10px] text-stone-500">Germany</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center space-y-1">
+          <div class="font-bold text-stone-900">New York / Houston</div>
+          <div class="text-coffee-700 font-bold text-sm">30 to 35 Days</div>
+          <div class="text-[10px] text-stone-500">North America</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center space-y-1">
+          <div class="font-bold text-stone-900">Yokohama / Kobe</div>
+          <div class="text-coffee-700 font-bold text-sm">18 to 24 Days</div>
+          <div class="text-[10px] text-stone-500">Japan</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center space-y-1">
+          <div class="font-bold text-stone-900">Melbourne / Sydney</div>
+          <div class="text-coffee-700 font-bold text-sm">22 to 26 Days</div>
+          <div class="text-[10px] text-stone-500">Australia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA with Background Image -->
+  <section 
+    class="py-20 text-white relative bg-cover bg-center"
+    style="background-image: linear-gradient(rgba(18, 16, 15, 0.85), rgba(18, 16, 15, 0.90)), url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
+      <h2 class="text-3xl font-bold font-serif text-white tracking-tight">
+        Test Demo Exporter Account Inquiries
+      </h2>
+      <p class="text-sm text-stone-200 leading-relaxed max-w-2xl mx-auto">
+        Speak with our commercial trade managers today to discuss current crop availability, forward shipping windows, or customized milling specifications.
+      </p>
+      <div class="pt-2">
+        <a
+          href="/quote"
+          class="inline-block px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#A35326] to-[#BA5E2B] hover:from-[#8E431B] hover:to-[#A35326] transition-all shadow-xl"
+        >
+          Submit Commercial Inquiry
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

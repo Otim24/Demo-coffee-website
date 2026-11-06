@@ -1,0 +1,88 @@
+---
+import type { CoffeeGrade } from '../data/coffees';
+
+interface Props {
+  coffee: CoffeeGrade;
+  featured?: boolean;
+}
+
+const { coffee, featured = false } = Astro.props;
+---
+
+<div class={`bg-white rounded-2xl border border-stone-200/90 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden group ${featured ? 'ring-1 ring-coffee-500/30' : ''}`}>
+  <!-- Card Header -->
+  <div class="p-5 sm:p-6 border-b border-stone-100 flex-grow">
+    <div class="flex items-center justify-between gap-3 mb-2">
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-stone-100 text-stone-700">
+        {coffee.species}
+      </span>
+      {coffee.badge && (
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-coffee-50 text-coffee-700 border border-coffee-200">
+          {coffee.badge}
+        </span>
+      )}
+    </div>
+
+    <h3 class="text-lg sm:text-xl font-bold font-serif text-stone-900 group-hover:text-coffee-600 transition-colors leading-tight mb-1">
+      {coffee.name}
+    </h3>
+
+    <div class="text-[10px] font-semibold text-coffee-700 uppercase tracking-wider mb-3">
+      {coffee.grade}
+    </div>
+
+    <p class="text-xs text-stone-600 leading-relaxed mb-4 line-clamp-2">
+      {coffee.description}
+    </p>
+
+    <!-- Tasting Notes Tags -->
+    <div class="mb-4">
+      <span data-i18n="card_cup_notes" class="text-[9px] font-bold tracking-widest uppercase text-stone-500 block mb-1.5">
+        Cup Profile Notes
+      </span>
+      <div class="flex flex-wrap gap-1">
+        {coffee.tastingNotes.slice(0, 4).map((note) => (
+          <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#FAF6F0] text-stone-800 border border-stone-200/70">
+            {note}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Technical Specs Table (Condensed to 4 key rows) -->
+    <div class="space-y-0 pt-3 border-t border-stone-100 text-xs text-stone-600">
+      <div class="flex items-center justify-between py-0.5">
+        <span data-i18n="card_origin" class="text-stone-500">Origin / Region:</span>
+        <span class="font-medium text-stone-900 text-right">{coffee.origin.split(',')[0]}</span>
+      </div>
+      <div class="flex items-center justify-between py-0.5">
+        <span data-i18n="card_altitude" class="text-stone-500">Altitude:</span>
+        <span class="font-medium text-stone-900">{coffee.altitude}</span>
+      </div>
+      <div class="flex items-center justify-between py-0.5">
+        <span data-i18n="card_processing" class="text-stone-500">Processing:</span>
+        <span class="font-medium text-stone-900">{coffee.process.split(',')[0]}</span>
+      </div>
+      {coffee.scaScore && (
+        <div class="flex items-center justify-between py-0.5">
+          <span data-i18n="card_sca_score" class="text-stone-500">SCA Cup Score:</span>
+          <span class="font-bold text-coffee-700">{coffee.scaScore}</span>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Card Action Footer -->
+  <div class="px-5 py-3 bg-stone-50/70 border-t border-stone-100 flex items-center justify-between gap-3">
+    <div class="text-[10px] text-stone-500">
+      <span data-i18n="card_packaging">Packaging:</span> <span class="font-medium text-stone-800">{coffee.packaging.split(',')[0]}</span>
+    </div>
+    <a
+      href={`/quote?interest=${coffee.id}`}
+      data-i18n="card_btn_quote"
+      class="inline-flex items-center justify-center px-4 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider text-white bg-[#1C1917] hover:bg-coffee-600 transition-colors whitespace-nowrap"
+    >
+      Request Quote
+    </a>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{
+  "name": "mwanyi-uganda-coffee",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 XDG_CONFIG_HOME=/tmp/.config astro dev",
+    "start": "ASTRO_TELEMETRY_DISABLED=1 XDG_CONFIG_HOME=/tmp/.config astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 XDG_CONFIG_HOME=/tmp/.config astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 XDG_CONFIG_HOME=/tmp/.config astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.18",
+    "@astrojs/tailwind": "^5.1.4",
+    "tailwindcss": "^3.4.17"
+  }
+}

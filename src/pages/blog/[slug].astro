@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { articles } from '../../data/articles';
+
+export async function getStaticPaths() {
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const otherArticles = articles.filter((a) => a.slug !== article.slug).slice(0, 2);
+---
+
+<Layout
+  title={`${article.title} | Demo Coffee Exporters Ltd.`}
+  description={article.summary}
+>
+  <!-- Breadcrumb and Hero with Background Image -->
+  <article class="bg-white">
+    <div 
+      class="relative text-white py-16 lg:py-24 border-b border-stone-800 bg-cover bg-center"
+      style="background-image: linear-gradient(to bottom, rgba(18, 16, 15, 0.82) 0%, rgba(18, 16, 15, 0.92) 100%), url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=2000&q=80');"
+    >
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center space-x-2 text-xs text-stone-300 mb-6 font-medium">
+          <a href="/" class="hover:text-amber-300 transition-colors">Home</a>
+          <span>/</span>
+          <a href="/blog" class="hover:text-amber-300 transition-colors">Insights</a>
+          <span>/</span>
+          <span class="text-stone-400 truncate max-w-xs">{article.category}</span>
+        </nav>
+
+        <div class="inline-block px-3.5 py-1 rounded-full bg-stone-900/80 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">
+          {article.category}
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif tracking-tight leading-tight mb-6">
+          {article.title}
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-stone-300 border-t border-white/15 pt-4">
+          <span>By {article.author}</span>
+          <span class="text-stone-500">|</span>
+          <span>Published: {article.date}</span>
+          <span class="text-stone-500">|</span>
+          <span>{article.readTime}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Summary Callout -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] border border-stone-200 mb-12">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-coffee-700 block mb-1">
+          EXECUTIVE SUMMARY
+        </span>
+        <p class="text-stone-800 text-base sm:text-lg font-serif italic leading-relaxed">
+          "{article.summary}"
+        </p>
+      </div>
+
+      <!-- Main Prose -->
+      <div class="space-y-6 text-stone-800 leading-relaxed text-sm sm:text-base font-normal">
+        {article.content.map((paragraph) => (
+          <p class="text-stone-700 leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+
+      <!-- Trade Desk Action Box with Background Image -->
+      <div 
+        class="mt-16 p-8 rounded-3xl text-white flex flex-col sm:flex-row items-center justify-between gap-6 relative bg-cover bg-center overflow-hidden"
+        style="background-image: linear-gradient(rgba(18, 16, 15, 0.88), rgba(18, 16, 15, 0.94)), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1500&q=80');"
+      >
+        <div class="space-y-2 relative z-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-300">DEMO INQUIRY</span>
+          <h3 class="text-xl font-bold font-serif text-white">Source Lots Referenced in this Report</h3>
+          <p class="text-xs text-stone-300">Contact our Kampala export team simulation for harvest allocations and spot quotations.</p>
+        </div>
+        <a
+          href="/quote"
+          class="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#A35326] hover:bg-[#8E431B] transition-colors whitespace-nowrap shadow-md relative z-10"
+        >
+          Contact Export Desk
+        </a>
+      </div>
+
+      <!-- Back to Blog & Other Articles -->
+      <div class="mt-20 pt-10 border-t border-stone-200">
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="text-xl font-bold font-serif text-stone-900">Related Market Intelligence</h3>
+          <a href="/blog" class="text-xs font-bold text-coffee-700 hover:text-coffee-800 uppercase tracking-wider">
+            All Articles &rarr;
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {otherArticles.map((item) => (
+            <div class="p-6 rounded-2xl border border-stone-200 bg-[#FAF8F5] space-y-2 hover:border-coffee-500 transition-colors">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-coffee-700">{item.category}</span>
+              <h4 class="text-base font-bold font-serif text-stone-900 leading-tight">
+                <a href={`/blog/${item.slug}`} class="hover:text-coffee-700 transition-colors">
+                  {item.title}
+                </a>
+              </h4>
+              <p class="text-xs text-stone-600 line-clamp-2">{item.summary}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </article>
+</Layout>

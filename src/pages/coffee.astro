@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CoffeeCard from '../components/CoffeeCard.astro';
+import { coffeeGrades } from '../data/coffees';
+---
+
+<Layout
+  title="Our Coffee | Green Arabica and Robusta Export Catalog | Demo Coffee Exporters"
+  description="Explore green coffee grades exported by Demo Coffee Exporters Ltd.: Mount Elgon Bugisu AA, Bugisu A, Peaberry, Rwenzori Specialty Naturals, and Screen 18 Fine Robusta."
+>
+  <!-- Page Header with Photographic Background Image -->
+  <div 
+    class="relative text-white py-20 lg:py-28 border-b border-stone-800 bg-cover bg-center"
+    style="background-image: linear-gradient(to bottom, rgba(18, 16, 15, 0.78) 0%, rgba(18, 16, 15, 0.90) 100%), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-600/40 text-[10px] text-amber-300 font-bold tracking-widest uppercase mb-4">
+          <span>EXPORT VARIETIES SHOWCASE</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold font-serif tracking-tight leading-tight">
+          Ugandan Green Coffee Offerings
+        </h1>
+        <p class="text-stone-200 text-sm sm:text-base mt-4 leading-relaxed">
+          Screened, density-separated, and optically sorted at our simulated Kampala mill. Available for shipment in standard 60kg jute bags with GrainPro hermetic liners.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter & Catalog Section -->
+  <section class="py-16 bg-[#FAF8F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Filter Tabs Container with Glass Pill Styling -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-10 pb-6 border-b border-stone-200">
+        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-full bg-stone-200/60 backdrop-blur-md border border-stone-300/50" id="filter-btn-container">
+          <button
+            type="button"
+            data-filter="all"
+            class="filter-btn active px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1C1917] text-white transition-all shadow-md"
+          >
+            All Offerings ({coffeeGrades.length})
+          </button>
+          <button
+            type="button"
+            data-filter="Arabica"
+            class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-transparent text-stone-700 hover:bg-white transition-all"
+          >
+            Arabica ({coffeeGrades.filter(c => c.species === 'Arabica').length})
+          </button>
+          <button
+            type="button"
+            data-filter="Robusta"
+            class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-transparent text-stone-700 hover:bg-white transition-all"
+          >
+            Robusta ({coffeeGrades.filter(c => c.species === 'Robusta').length})
+          </button>
+        </div>
+
+        <div class="text-xs text-stone-500 font-medium">
+          Standard Packing: 60kg GrainPro Jute | FCL: 320 Bags (19.2 MT)
+        </div>
+      </div>
+
+      <!-- Coffee Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coffee-grid">
+        {coffeeGrades.map((coffee) => (
+          <div class="coffee-card-wrapper reveal-on-scroll" data-species={coffee.species} id={coffee.id}>
+            <CoffeeCard coffee={coffee} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Uganda Harvest & Shipping Calendar -->
+  <section class="py-20 bg-white border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-2">
+          SEASONALITY
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold font-serif text-stone-900 tracking-tight">
+          Harvest Calendar and Shipping Cycles
+        </h2>
+        <p class="text-stone-600 text-sm mt-3 leading-relaxed">
+          Due to Uganda unique position across the Equator, coffee is harvested year-round between Arabica and Robusta regions. This gives international buyers a consistent supply of fresh green coffee throughout both global hemispheres.
+        </p>
+      </div>
+
+      <!-- Seasonality Table -->
+      <div class="overflow-x-auto border border-stone-200 rounded-2xl shadow-sm">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-stone-900 text-white border-b border-stone-800">
+              <th class="p-4 font-bold uppercase tracking-wider">Region & Variety</th>
+              <th class="p-4 font-bold uppercase tracking-wider">Main Crop Harvest</th>
+              <th class="p-4 font-bold uppercase tracking-wider">Fly Crop Harvest</th>
+              <th class="p-4 font-bold uppercase tracking-wider">Mombasa Ocean Dispatch</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-stone-200 text-stone-700 bg-white">
+            <tr class="hover:bg-stone-50">
+              <td class="p-4 font-bold text-stone-900">
+                Mount Elgon (Arabica Bugisu)
+              </td>
+              <td class="p-4">October to February</td>
+              <td class="p-4">May to July</td>
+              <td class="p-4 font-medium text-coffee-700">December to April (Primary)</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="p-4 font-bold text-stone-900">
+                Rwenzori Mountains (Specialty Arabica)
+              </td>
+              <td class="p-4">September to January</td>
+              <td class="p-4">April to June</td>
+              <td class="p-4 font-medium text-coffee-700">November to March</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="p-4 font-bold text-stone-900">
+                Central & South (Robusta Screen 18 & 15)
+              </td>
+              <td class="p-4">November to February</td>
+              <td class="p-4">May to August</td>
+              <td class="p-4 font-medium text-coffee-700">Year-Round Continuous</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="p-4 font-bold text-stone-900">
+                Western Uganda (Robusta FAQ)
+              </td>
+              <td class="p-4">May to August</td>
+              <td class="p-4">October to December</td>
+              <td class="p-4 font-medium text-coffee-700">July to November</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-Shipment Sample Box Program Banner with Background Image -->
+  <section 
+    class="py-20 text-white relative bg-cover bg-center"
+    style="background-image: linear-gradient(rgba(18, 16, 15, 0.82), rgba(18, 16, 15, 0.90)), url('https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <span class="text-xs font-bold tracking-widest uppercase text-amber-300">
+            SENSORY EVALUATION SERVICE
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold font-serif text-white tracking-tight">
+            Order a Representative Pre-Shipment Sample Box
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-200 leading-relaxed max-w-2xl">
+            We provide verified 300g to 500g green coffee sample boxes for qualified commercial roasters and green coffee importers. Each sample is drawn from current milled stocks, accompanied by moisture readings, screen distribution percentages, and cupping scores.
+          </p>
+        </div>
+        <div class="lg:col-span-4 lg:text-right">
+          <a
+            href="/quote?interest=sample"
+            class="inline-block px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#A35326] to-[#BA5E2B] hover:from-[#8E431B] hover:to-[#A35326] transition-all shadow-xl border border-amber-400/30"
+          >
+            Request Green Coffee Samples
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function setupFilter() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.coffee-card-wrapper');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-[#1C1917]', 'text-white', 'shadow-md');
+          b.classList.add('bg-transparent', 'text-stone-700');
+        });
+        btn.classList.remove('bg-transparent', 'text-stone-700');
+        btn.classList.add('bg-[#1C1917]', 'text-white', 'shadow-md');
+
+        cards.forEach((card) => {
+          const el = card as HTMLElement;
+          const species = el.getAttribute('data-species');
+          if (filter === 'all' || species === filter) {
+            el.style.display = 'block';
+          } else {
+            el.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  setupFilter();
+  document.addEventListener('astro:page-load', setupFilter);
+</script>

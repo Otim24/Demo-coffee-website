@@ -1,0 +1,261 @@
+---
+interface Props {
+  presetInterest?: string;
+}
+
+const { presetInterest = "" } = Astro.props;
+---
+
+<div class="bg-white rounded-2xl border border-stone-200/90 shadow-sm p-6 sm:p-8 lg:p-10">
+  <div class="mb-8">
+    <span data-i18n="quote_badge" class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-1">
+      TRADE DESK INQUIRY
+    </span>
+    <h2 data-i18n="quote_title" class="text-2xl sm:text-3xl font-bold font-serif text-stone-900 tracking-tight">
+      Export Inquiry
+    </h2>
+    <p data-i18n="quote_subtitle" class="text-sm text-stone-600 mt-2">
+      Request current harvest spot prices, forward shipping contracts, or sample green coffee allocations.
+    </p>
+  </div>
+
+  <form id="export-quote-form" class="space-y-6">
+    <!-- Row 1: Names -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div>
+        <label for="first-name" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_first_name">First Name</span> <span class="text-coffee-600">*</span>
+        </label>
+        <input
+          type="text"
+          id="first-name"
+          name="firstName"
+          required
+          placeholder="John"
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm placeholder-stone-400 outline-none transition-all"
+        />
+      </div>
+
+      <div>
+        <label for="last-name" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_last_name">Last Name</span> <span class="text-coffee-600">*</span>
+        </label>
+        <input
+          type="text"
+          id="last-name"
+          name="lastName"
+          required
+          placeholder="Doe"
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm placeholder-stone-400 outline-none transition-all"
+        />
+      </div>
+    </div>
+
+    <!-- Row 2: Company & Business Email -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div>
+        <label for="company-name" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_company">Company Name</span> <span class="text-coffee-600">*</span>
+        </label>
+        <input
+          type="text"
+          id="company-name"
+          name="companyName"
+          required
+          placeholder="Roasters Inc."
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm placeholder-stone-400 outline-none transition-all"
+        />
+      </div>
+
+      <div>
+        <label for="business-email" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_email">Business Email</span> <span class="text-coffee-600">*</span>
+        </label>
+        <input
+          type="email"
+          id="business-email"
+          name="businessEmail"
+          required
+          placeholder="procurement@company.com"
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm placeholder-stone-400 outline-none transition-all"
+        />
+      </div>
+    </div>
+
+    <!-- Row 3: Phone / WhatsApp & Destination Port -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div>
+        <label for="contact-phone" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_phone">Phone / WhatsApp</span>
+        </label>
+        <input
+          type="tel"
+          id="contact-phone"
+          name="phone"
+          placeholder="+1 (555) 000-0000"
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm placeholder-stone-400 outline-none transition-all"
+        />
+      </div>
+
+      <div>
+        <label for="destination-port" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_destination">Target Destination Port</span>
+        </label>
+        <input
+          type="text"
+          id="destination-port"
+          name="destinationPort"
+          placeholder="e.g. Hamburg, Genoa, Rotterdam, Houston"
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm placeholder-stone-400 outline-none transition-all"
+        />
+      </div>
+    </div>
+
+    <!-- Row 4: Primary Interest -->
+    <div>
+      <label for="primary-interest" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+        <span data-i18n="form_coffee_grade">Primary Interest</span> <span class="text-coffee-600">*</span>
+      </label>
+      <div class="relative">
+        <select
+          id="primary-interest"
+          name="primaryInterest"
+          required
+          class="w-full appearance-none px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm outline-none transition-all bg-white"
+        >
+          <option value="" disabled selected={!presetInterest}>Select an option</option>
+          <option value="Arabica Bugisu Grade AA" selected={presetInterest === 'bugisu-aa'}>Arabica Bugisu Grade AA (Screen 17/18)</option>
+          <option value="Arabica Bugisu Grade A" selected={presetInterest === 'bugisu-a'}>Arabica Bugisu Grade A (Screen 15/16)</option>
+          <option value="Arabica Bugisu Peaberry" selected={presetInterest === 'peaberry'}>Arabica Bugisu Peaberry (PB)</option>
+          <option value="Specialty Rwenzori Natural" selected={presetInterest === 'rwenzori'}>Specialty Rwenzori Natural (Mountains of the Moon)</option>
+          <option value="Uganda Robusta Screen 18" selected={presetInterest === 'robusta-18'}>Uganda Robusta Screen 18 (FAQ Clean Cup)</option>
+          <option value="Uganda Robusta Screen 15" selected={presetInterest === 'robusta-15'}>Uganda Robusta Screen 15 (Standard Export)</option>
+          <option value="Certified Organic Lots" selected={presetInterest === 'organic'}>Certified Organic Arabica / Robusta</option>
+          <option value="Pre-Shipment Sample Box" selected={presetInterest === 'sample'}>Pre-Shipment Sample Box Request (DHL Dispatch)</option>
+          <option value="Toll Milling and Private Packing">Toll Milling and Private Label Bagging</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-stone-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: Volume & Incoterms -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div>
+        <label for="estimated-volume" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_volume">Estimated Volume</span>
+        </label>
+        <select
+          id="estimated-volume"
+          name="estimatedVolume"
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm outline-none transition-all bg-white"
+        >
+          <option value="Sample lot (300g to 10kg)">Sample lot (300g to 10kg)</option>
+          <option value="1 x 20ft FCL (19.2 MT / 320 bags)">1 x 20ft FCL (19.2 MT / 320 bags)</option>
+          <option value="2 to 5 x 20ft FCLs (38 to 96 MT)">2 to 5 x 20ft FCLs (38 to 96 MT)</option>
+          <option value="Annual Supply Contract (100+ MT)">Annual Supply Contract (100+ MT)</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="incoterms" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+          <span data-i18n="form_incoterm">Incoterms Preference</span>
+        </label>
+        <select
+          id="incoterms"
+          name="incoterms"
+          class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm outline-none transition-all bg-white"
+        >
+          <option value="FOB Mombasa Port">FOB Mombasa Port (Standard)</option>
+          <option value="CIF Destination Port">CIF Destination Port</option>
+          <option value="CFR Destination Port">CFR Destination Port</option>
+          <option value="FCA Kampala Mill">FCA Kampala Mill</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Message / Requirements -->
+    <div>
+      <label for="message-requirements" class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+        <span data-i18n="form_notes">Message / Requirements</span>
+      </label>
+      <textarea
+        id="message-requirements"
+        name="message"
+        rows="4"
+        placeholder="Please include details such as estimated volume, destination port, and specific quality requirements..."
+        class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-500/20 text-stone-900 text-sm placeholder-stone-400 outline-none transition-all resize-y"
+      ></textarea>
+    </div>
+
+    <!-- Submit Button matching reference screenshot -->
+    <div>
+      <button
+        type="submit"
+        id="submit-inquiry-btn"
+        class="w-full flex items-center justify-center space-x-2 py-4 px-6 rounded-lg bg-[#1C1917] hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-widest transition-all duration-200 shadow-sm hover:shadow active:scale-[0.99] disabled:opacity-50"
+      >
+        <span id="btn-text" data-i18n="form_submit">SUBMIT INQUIRY</span>
+        <svg id="btn-icon" class="w-4 h-4 text-coffee-400 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Success / Error Notice Box -->
+    <div id="form-feedback" class="hidden p-4 rounded-lg text-sm"></div>
+  </form>
+</div>
+
+<script>
+  function setupQuoteForm() {
+    const form = document.getElementById('export-quote-form') as HTMLFormElement | null;
+    const feedback = document.getElementById('form-feedback');
+    const submitBtn = document.getElementById('submit-inquiry-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('btn-text');
+
+    if (!form || !feedback || !submitBtn || !btnText) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // UI loading state
+      submitBtn.disabled = true;
+      const originalText = btnText.textContent;
+      btnText.textContent = 'TRANSMITTING TO TRADE DESK...';
+
+      setTimeout(() => {
+        const formData = new FormData(form);
+        const firstName = formData.get('firstName') as string;
+        const companyName = formData.get('companyName') as string;
+        const randomRef = 'DEMO-' + Math.floor(100000 + Math.random() * 900000);
+
+        feedback.className = 'p-5 rounded-2xl text-sm bg-emerald-50 border border-emerald-200 text-emerald-900 block space-y-2';
+        feedback.innerHTML = `
+          <div class="font-bold text-base text-emerald-950 flex items-center space-x-2">
+            <svg class="w-5 h-5 text-emerald-600 inline-block flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Demonstration Inquiry Logged</span>
+          </div>
+          <p class="text-emerald-800">
+            Thank you, ${firstName} (${companyName}). Your simulated quote reference is <strong>${randomRef}</strong>.
+          </p>
+          <p class="text-xs text-emerald-700">
+            This inquiry was processed by the Demo Coffee Exporters prototype platform. In a live production environment, this triggers immediate notification to the Kampala export desk.
+          </p>
+        `;
+
+        form.reset();
+        submitBtn.disabled = false;
+        btnText.textContent = originalText;
+      }, 750);
+    });
+  }
+
+  setupQuoteForm();
+  document.addEventListener('astro:page-load', setupQuoteForm);
+</script>

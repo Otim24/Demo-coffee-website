@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DirectLines from '../components/DirectLines.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+
+const interestParam = Astro.url.searchParams.get('interest') || '';
+---
+
+<Layout
+  title="Get Export Quote | Demo Coffee Exporters Ltd."
+  description="Request green coffee spot offers, container volume contracts, or pre-shipment cupping samples from our simulated Kampala trade desk."
+>
+  <!-- Page Header Banner with Background Image -->
+  <div 
+    class="relative text-white py-16 lg:py-24 border-b border-stone-800 bg-cover bg-center"
+    style="background-image: linear-gradient(to bottom, rgba(18, 16, 15, 0.78) 0%, rgba(18, 16, 15, 0.90) 100%), url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=2000&q=80');"
+  >
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-600/40 text-[10px] text-amber-300 font-bold tracking-widest uppercase mb-4">
+          <span>INTERACTIVE DEMO QUOTE DESK</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif tracking-tight">
+          Export Quotations and Direct Lines
+        </h1>
+        <p class="text-stone-200 text-sm sm:text-base mt-3 leading-relaxed">
+          Submit specifications for simulated current-crop Arabica and Robusta lots. Our prototype commercial trade desk demonstrates contract generation and sample dispatch within 24 hours.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Quote & Contact Interface (Matching Reference Layout) -->
+  <section class="py-12 lg:py-20 bg-[#FAF8F5]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left Column: Direct Lines & Google Map (5 cols on lg) -->
+        <div class="lg:col-span-5 reveal-on-scroll">
+          <DirectLines />
+        </div>
+
+        <!-- Right Column: Export Inquiry Form (7 cols on lg) -->
+        <div class="lg:col-span-7 reveal-on-scroll delay-100">
+          <QuoteForm presetInterest={interestParam} />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Export Assurance FAQ / Trust Notes -->
+  <section class="py-16 bg-white border-t border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold tracking-widest uppercase text-coffee-600 block mb-1">
+          TRADE STANDARDS
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-serif text-stone-900 tracking-tight">
+          What Happens After Your Inquiry
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-7 rounded-2xl bg-stone-50 border border-stone-200">
+          <div class="w-8 h-8 rounded-full bg-coffee-100 text-coffee-700 font-bold flex items-center justify-center text-sm mb-4">
+            01
+          </div>
+          <h3 class="text-base font-bold text-stone-900 mb-2">Technical Feasibility Review</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Our quality control desk verifies current inventory stock, screen size distributions, and cupping lab availability against your request.
+          </p>
+        </div>
+
+        <div class="p-7 rounded-2xl bg-stone-50 border border-stone-200">
+          <div class="w-8 h-8 rounded-full bg-coffee-100 text-coffee-700 font-bold flex items-center justify-center text-sm mb-4">
+            02
+          </div>
+          <h3 class="text-base font-bold text-stone-900 mb-2">Formal Spot Offer & Incoterms</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            You receive a comprehensive pro-forma quotation specifying FOB Mombasa or CIF destination port pricing, container stuffing timeline, and payment milestones.
+          </p>
+        </div>
+
+        <div class="p-7 rounded-2xl bg-stone-50 border border-stone-200">
+          <div class="w-8 h-8 rounded-full bg-coffee-100 text-coffee-700 font-bold flex items-center justify-center text-sm mb-4">
+            03
+          </div>
+          <h3 class="text-base font-bold text-stone-900 mb-2">Pre-Shipment Sample Dispatch</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            For approved commercial buyers, representative 300g to 500g green coffee samples are packaged in moisture barrier bags and sent via express courier.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
